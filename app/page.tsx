@@ -1,113 +1,102 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+import React, { useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import Price from '@/components/subscription/price';
+import Navbar from '@/components/Navbar';
+import InputVideo from '@/components/InputVideo';
+import { useRouter } from 'next/navigation';
+import useUser from './hook/useUser';
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+const page = () => {
+    const router = useRouter();
+    const { data: user } = useUser();
+    useEffect(() => {
+        const checkUserLoggedIn = async () => {
+            // Replace this with your actual check
+            if (user?.id) {
+                console.log('User is logged in');
+                router.push('/dashboard');
+            }
+        };
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        checkUserLoggedIn();
+    }, [user]);
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+    const benefits = [
+        {
+            title: 'Boost Viewer Engagement',
+            description:
+                'By providing clear and precise timestamps, viewers can easily find and jump to the parts of the video that interest them the most. This convenience encourages viewers to watch more segments of your video, ultimately increasing the overall watch time.',
+        },
+        {
+            title: 'Improve SEO',
+            description:
+                'Search engines like Google use timestamps to understand the content of a video. By providing timestamps, you can help search engines better understand your video content, which can improve your video’s search ranking.',
+        },
+        {
+            title: 'Save Time',
+            description:
+                'Manually creating timestamps for your videos can be time-consuming. TimeStampYT uses AI to automatically generate timestamps for your videos, saving you time and effort',
+        },
+        {
+            title: 'Increase Video Views',
+            description:
+                'By providing timestamps, you can make your videos more accessible to viewers. This can help attract new viewers and increase the number of views on your videos.',
+        },
+        {
+            title: 'Improve User Experience',
+            description:
+                'Viewers appreciate videos that are easy to navigate. By providing timestamps, you can improve the user experience of your videos and make them more enjoyable to watch.',
+        },
+        {
+            title: 'Boost Video Revenue',
+            description:
+                'By increasing viewer engagement and watch time, you can boost your video revenue. TimeStampYT helps you maximize your video revenue by making your videos more engaging and accessible to viewers.',
+        },
+    ];
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+    return (
+        <>
+            <div className="w-[80%] mx-auto">
+                <Navbar />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
-}
+                <div className="text-center flex flex-col justify-center h-[600px]">
+                    <h1 className="text-3xl">
+                        Instantly Create Timestamps for Your YouTube Videos with
+                        AI
+                    </h1>
+
+                    <div className="py-6">
+                        <h1>Try for free</h1>
+                        <InputVideo />
+                    </div>
+                </div>
+
+                <div>
+                    <h1 className="text-2xl text-center py-6">
+                        Why use TimeStampYT?
+                    </h1>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {benefits.map((benefit) => (
+                            <div
+                                key={benefit.title}
+                                className="p-2 bg-slate-600 rounded-lg"
+                            >
+                                <h1>{benefit.title}</h1>
+                                <p>{benefit.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="py-8">
+                    <Price />
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default page;
