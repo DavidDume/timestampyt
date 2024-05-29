@@ -19,9 +19,7 @@ const Page = () => {
 
     return (
         <Sidebar>
-            <h1>This is subscription page</h1>
-
-            <div>
+            <div className="h-[100vh] flex justify-center items-center flex-col gap-3">
                 {isActive ? (
                     <Post />
                 ) : (

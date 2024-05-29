@@ -27,12 +27,6 @@ export default function Sidebar({ children }: Props) {
                     >
                         <span>Your Timestamps</span>
                     </Link>
-                    <Link
-                        className="flex items-center space-x-2 hover:text-gray-400"
-                        href="#"
-                    >
-                        <span>Settings</span>
-                    </Link>
                 </nav>
                 <div className="mt-auto flex items-center space-x-4">
                     <Profile />

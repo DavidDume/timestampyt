@@ -55,7 +55,7 @@ const Post = () => {
 
             const response = await fetch(`/api/stripe?subId=${subId}`);
             const res = await response.json();
-            console.log(res);
+            //console.log(res);
             setSubDetails(res);
         };
 
@@ -63,27 +63,28 @@ const Post = () => {
     }, []);
 
     return (
-        <div>
+        <div className="text-center">
             {subDetails ? (
                 <div>
-                    <h1>
+                    <h1 className="text-2xl">
                         Your plan is:
                         {subDetails.plan.product === SHORT_CONTENT.id
-                            ? 'Short Content'
-                            : 'Long Content'}
+                            ? ' Short Content'
+                            : ' Long Content'}
                     </h1>
                     <h3>
-                        Your subscription ends
+                        Your subscription ends{' '}
                         {new Date(
                             subDetails.current_period_end * 1000
                         ).toLocaleDateString()}
                     </h3>
+                    <Button onClick={cancelSubscription} className="my-12">
+                        Cancel Subscription
+                    </Button>
                 </div>
             ) : (
                 <div></div>
             )}
-
-            <Button onClick={cancelSubscription}>Cancel Subscription</Button>
         </div>
     );
 };

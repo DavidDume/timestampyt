@@ -2,7 +2,6 @@
 
 import { supabaseBrowser } from '@/lib/supabase/browser';
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
 
 const initUser = {
     created_at: '',

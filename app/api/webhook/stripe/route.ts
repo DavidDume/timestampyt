@@ -73,6 +73,7 @@ async function onPaymentSucceeded(
             end_at,
             customer_id,
             subscription_id,
+            is_active: true,
         })
         .eq('email', email);
     return error;
@@ -83,8 +84,7 @@ async function onSubCancel(subscription_id: string) {
     const { error } = await supabase
         .from('subscription')
         .update({
-            customer_id: null,
-            subscription_id: null,
+            is_active: false,
         })
         .eq('subscription_id', subscription_id);
     return error;

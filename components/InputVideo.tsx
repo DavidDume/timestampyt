@@ -88,6 +88,17 @@ const InputVideo = () => {
         }
     }, [video]);
 
+    if (
+        !user?.subscription?.end_at ||
+        user?.subscription?.end_at < new Date().toISOString()
+    ) {
+        return (
+            <div className="text-center">
+                You need to subscribe to use this feature
+            </div>
+        );
+    }
+
     async function getTimestamps() {
         const transcriptInfo = {
             text: transcript,
@@ -117,8 +128,8 @@ const InputVideo = () => {
 
     return (
         <>
-            <div className="flex gap-2 p-2 mx-auto w-max">
-                <div className="flex items-center gap-2 bg-slate-600 p-1 rounded-md w-[450px]">
+            <div className="flex gap-2 p-2 mx-auto w-max my-12">
+                <div className="flex items-center gap-2 bg-slate-600 p-1 rounded-md w-[450px] ">
                     <PiLinkLight />
                     <input
                         type="text"
