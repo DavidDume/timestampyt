@@ -8,6 +8,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { PiLinkLight } from 'react-icons/pi';
 import { Button } from './ui/button';
 import TimeStampCard from '@/app/dashboard/components/TimeStampCard';
+import Link from 'next/link';
 
 const InputVideo = () => {
     const { data: user } = useUser();
@@ -94,7 +95,11 @@ const InputVideo = () => {
     ) {
         return (
             <div className="text-center">
-                You need to subscribe to use this feature
+                You need to{' '}
+                <Link className="underline" href={'/subscription'}>
+                    subscribe
+                </Link>{' '}
+                to use this feature
             </div>
         );
     }

@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+
 import Price from '@/components/subscription/price';
 import Navbar from '@/components/Navbar';
-import InputVideo from '@/components/InputVideo';
 import { useRouter } from 'next/navigation';
 import useUser from './hook/useUser';
+import hero from '@/public/hero.png';
+import Image from 'next/image';
 
 const page = () => {
     const router = useRouter();
@@ -67,14 +67,9 @@ const page = () => {
                         Instantly Create Timestamps for Your YouTube Videos with
                         AI
                     </h1>
-
-                    <div className="py-6">
-                        <h1>Try for free</h1>
-                        <InputVideo />
-                    </div>
                 </div>
 
-                <div>
+                <div className="mb-20">
                     <h1 className="text-2xl text-center py-6">
                         Why use TimeStampYT?
                     </h1>
@@ -89,6 +84,10 @@ const page = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+
+                <div className="flex justify-center">
+                    <Image width={600} height={600} src={hero} alt="" />
                 </div>
 
                 <div className="py-8">

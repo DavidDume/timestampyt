@@ -24,7 +24,6 @@ const Page = () => {
                     <Post />
                 ) : (
                     <div>
-                        <h1>You need to subscribe to see the data</h1>
                         <Price />
                     </div>
                 )}

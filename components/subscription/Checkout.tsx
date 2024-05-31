@@ -39,10 +39,7 @@ const Checkout = ({ priceId }: { priceId: string }) => {
     };
 
     return (
-        <Button
-            className="w-full flex items-center gap-2"
-            onClick={handleCheckout}
-        >
+        <Button className="" onClick={handleCheckout}>
             Getting Started
             <AiOutlineLoading3Quarters
                 className={cn('animate-spin', loading ? 'block' : 'hidden')}

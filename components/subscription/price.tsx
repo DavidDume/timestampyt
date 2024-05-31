@@ -11,23 +11,31 @@ export default function Price() {
     const prices = [
         {
             title: 'Short Content',
-            description: '$6/life time',
-            benefits: [
-                'Up to 25 minutes of content can be processed',
-                'Unlimited number of TimeStamps generations',
-                'Edit options',
-            ],
+            description: '$6 per month',
+            benefits: ['Up to 15 videos per month', 'Edit options'],
             amount: 6,
             priceId: 'price_1PK22bJahvWWjgcOw2R8e4ue',
         },
         {
-            title: 'Long Contet',
-            description: '$9/life time',
+            title: 'Long Content',
+            description: '$9 per month',
             benefits: [
-                'Up to 25 minutes of content can be processed',
+                'Up to 30 videos per month',
+                'Edit options',
+                'Perfect for podcasts',
+                'Early access to new updates',
+            ],
+            amount: 9,
+            priceId: 'price_1PK22oJahvWWjgcOPoIgESFE',
+        },
+        {
+            title: 'Unlimited',
+            description: '$14 per month',
+            benefits: [
+                'Unlimited videos per month',
                 'Unlimited number of TimeStamps generations',
                 'Edit options',
-                'Perfect for podacts',
+                'Perfect for podcasts',
                 'Early access to new updates',
             ],
             amount: 9,
@@ -38,7 +46,7 @@ export default function Price() {
     return (
         <>
             <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                     {prices.map((price, i) => {
                         const isPopular = i === 1;
 
